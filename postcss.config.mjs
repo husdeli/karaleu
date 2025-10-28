@@ -6,9 +6,7 @@ const __dirname = join(__filename, '..')
 
 const config = {
   plugins: {
-    '@tailwindcss/postcss': {
-      config: join(__dirname, 'tailwind.config.ts'),
-    },
+    '@tailwindcss/postcss': {},
     'postcss-preset-mantine': {},
     'postcss-simple-vars': {},
   },

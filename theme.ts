@@ -1,7 +1,7 @@
 import { createTheme, rem } from '@mantine/core'
 import colors from 'tailwindcss/colors'
 
-const PrimaryPallete = colors.pink
+const PrimaryPallete = colors.indigo
 const ErrorPallete = colors.red
 const SlatePallete = colors.slate
 const WhitePallete = colors.white
@@ -32,19 +32,19 @@ type ColorSet = [
   string,
 ]
 
-export const fontFamily = 'Lusitana'
+export const fontFamily = 'Geist, Geist Fallback'
 
 export const mantineTheme = createTheme({
   fontFamily: fontFamily,
   headings: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Geist, Geist Fallback',
   },
   fontSizes: {
     xs: rem(10),
-    sm: rem(12),
-    md: rem(14),
-    lg: rem(16),
-    xl: rem(20),
+    sm: rem(14),
+    md: rem(16),
+    lg: rem(18),
+    xl: rem(24),
     xxl: rem(36),
     xxxl: rem(40),
   },
@@ -64,6 +64,13 @@ export const mantineTheme = createTheme({
     success: Object.values(GreenPallete) as ColorSet,
     slate: Object.values(SlatePallete) as ColorSet,
     gray: Object.values(GrayPallete) as ColorSet,
+  },
+  spacing: {
+    xs: rem(4),
+    sm: rem(8),
+    md: rem(16),
+    lg: rem(24),
+    xl: rem(32),
   },
   primaryColor: 'primary',
 })
