@@ -1,5 +1,6 @@
 'use client'
 import {
+  ActionIcon,
   AppShell,
   Box,
   Burger,
@@ -10,6 +11,8 @@ import {
   Stack,
   Text,
   Title,
+  useComputedColorScheme,
+  useMantineColorScheme,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import {
@@ -20,7 +23,10 @@ import {
   IconMail,
   IconMapPin,
   IconPoint,
+  IconSun,
 } from '@tabler/icons-react'
+import classNames from 'classnames'
+import { useEffect, useState } from 'react'
 import { config } from './config'
 import { Section } from './Section'
 
@@ -28,13 +34,33 @@ const breakpoint = 'sm'
 const visibleFromClass = `mantine-visible-from-${breakpoint}`
 const hiddenFromClass = `mantine-hidden-from-${breakpoint}`
 
+const separator = (
+  <div className="w-full border border-slate-100 dark:border-[#212121]"></div>
+)
+
 export function CustomAppShell() {
+  const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('light')
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure()
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(false)
-  const scrollToSection = (id: string) => {}
+  const { toggleColorScheme } = useMantineColorScheme()
+  const computedColorScheme = useComputedColorScheme('light', {
+    getInitialValueInEffect: true,
+  })
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  useEffect(() => {
+    setColorScheme(computedColorScheme)
+  }, [computedColorScheme])
+
   return (
     <AppShell
       layout="alt"
+      footer={{
+        height: 60,
+        collapsed: true,
+      }}
       header={{ height: 60 }}
       navbar={{
         width: 300,
@@ -42,21 +68,40 @@ export function CustomAppShell() {
         collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
       }}
     >
-      <AppShell.Header>
-        <Container className="h-full">
-          <Group h="100%">
+      <AppShell.Header
+        className={classNames({
+          dark: colorScheme === 'dark',
+        })}
+      >
+        <Container
+          className={classNames('h-full flex items-center justify-between')}
+        >
+          <Group h="100%" w={'100%'} justify="space-between">
             <Burger
+              className="invisible"
               opened={mobileOpened}
               onClick={toggleMobile}
               hiddenFrom={breakpoint}
               size="sm"
             />
             <Burger
+              className="invisible"
               opened={desktopOpened}
               onClick={toggleDesktop}
               visibleFrom={breakpoint}
               size="sm"
             />
+
+            <Box>
+              <ActionIcon
+                variant="subtle"
+                className="text-amber-300"
+                size="lg"
+                onClick={toggleColorScheme}
+              >
+                <IconSun size={24} />
+              </ActionIcon>
+            </Box>
           </Group>
         </Container>
       </AppShell.Header>
@@ -65,7 +110,19 @@ export function CustomAppShell() {
         breakpoint, the navbar is no longer offset by padding in the main
         element and it takes the full width of the screen when opened.
       </AppShell.Navbar>
-      <AppShell.Main>
+      <AppShell.Main
+        className={classNames({
+          dark: colorScheme === 'dark',
+        })}
+      >
+        <div
+          className="absolute top-0 left-0 bg-pattern -z-10"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100vh',
+          }}
+        />
         <Container>
           <Stack gap={'xl'}>
             <Stack
@@ -79,7 +136,7 @@ export function CustomAppShell() {
             >
               <Box>
                 <Title
-                  className="text-slate-900"
+                  className="text-slate-900 dark:text-slate-100"
                   fw={900}
                   order={1}
                   fz={{
@@ -103,7 +160,7 @@ export function CustomAppShell() {
                 <Group
                   mt="xs"
                   gap="xs"
-                  className="text-slate-500 flex items-center text-muted-foreground"
+                  className="text-slate-500 dark:text-slate-400 flex items-center text-muted-foreground"
                 >
                   <Box visibleFrom={breakpoint}>
                     <IconMapPin size={16} />
@@ -124,11 +181,12 @@ export function CustomAppShell() {
               </Box>
 
               <Text
+                c={colorScheme === 'dark' ? 'gray.3' : 'gray.6'}
+                className="max-w-3xl"
                 fz={{
                   base: 'md',
                   [breakpoint]: 'lg',
                 }}
-                c="gray.9"
                 fw={400}
                 lh="lg"
               >
@@ -205,10 +263,10 @@ export function CustomAppShell() {
               </Box>
             </Stack>
 
-            <div className="w-full border border-slate-100"></div>
+            {separator}
 
             <Section id="about" title="Professional Summary">
-              <div className="space-y-4 text-foreground leading-relaxed">
+              <div className="space-y-4 text-foreground dark:text-slate-200 leading-relaxed">
                 <p>
                   Specializing in React, TypeScript, and Node.js ecosystems.
                   Strong focus on code quality, testing, and user experience.
@@ -238,14 +296,14 @@ export function CustomAppShell() {
               </div>
             </Section>
 
-            <div className="w-full border border-slate-100"></div>
+            {separator}
 
-            <Section id="projects" title=" Professional Experience">
+            <Section id="projects" title="Professional Experience">
               <Stack gap={'xl'} py="lg">
                 {config.projects.map((project) => (
                   <div
                     key={project.title}
-                    className="border-l-4 border-slate-300 pl-6 border bg-slate-50 p-4 rounded-xl"
+                    className="border-l-4 border-slate-300 pl-6 border bg-slate-50 dark:bg-[#212121] dark:border-[#333333] p-4 rounded-xl"
                   >
                     <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
                       <Title order={3}>{project.title}</Title>
@@ -307,6 +365,44 @@ export function CustomAppShell() {
                 ))}
               </Stack>
             </Section>
+
+            {separator}
+
+            <Section id="skills" title="Technical Skills"></Section>
+
+            <div className="space-y-6">
+              {config.skills.map((category) => (
+                <div key={category.category}>
+                  <h3 className="text-lg font-semibold mb-3">
+                    {category.category}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill) => (
+                      <Chip
+                        key={skill}
+                        variant="outline"
+                        checked={true}
+                        styles={{
+                          iconWrapper: {
+                            display: 'none',
+                          },
+                        }}
+                      >
+                        {skill}
+                      </Chip>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {separator}
+
+            <div className="pb-8 flex items-center justify-center text-center text-sm text-muted-foreground">
+              <Text c="gray.6">
+                © 2025 Dzmitry Karaleu. All rights reserved.
+              </Text>
+            </div>
           </Stack>
         </Container>
       </AppShell.Main>

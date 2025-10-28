@@ -75,4 +75,30 @@ export const config = {
       tech: ['Angular', 'RxJS', 'Node.js', 'PostgreSQL'],
     },
   ],
+  skills: [
+    {
+      category: 'Frontend',
+      skills: ['React', 'TypeScript', 'JavaScript', 'CSS', 'HTML'],
+    },
+    {
+      category: 'Backend',
+      skills: [
+        'Node.js',
+        'Express',
+        'Python',
+        'NestJS',
+        'TypeORM',
+        'Grafana',
+        'Prometheus',
+      ],
+    },
+    {
+      category: 'Database',
+      skills: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'],
+    },
+    {
+      category: 'DevOps',
+      skills: ['Docker', 'Kubernetes', 'AWS', 'Azure'],
+    },
+  ],
 }
