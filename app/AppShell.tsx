@@ -25,6 +25,7 @@ import {
   IconPoint,
   IconSun,
 } from '@tabler/icons-react'
+import { Analytics } from '@vercel/analytics/next'
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 import { config } from './config'
@@ -404,6 +405,7 @@ export function CustomAppShell() {
               </Text>
             </div>
           </Stack>
+          <Analytics />
         </Container>
       </AppShell.Main>
     </AppShell>
