@@ -16,6 +16,9 @@ const funnelDisplay = Funnel_Display({
 export const metadata = {
   title: 'Dzmitry Karaleu blog',
   description: 'Personal blog of Dzmitry Karaleu',
+  icons: {
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({

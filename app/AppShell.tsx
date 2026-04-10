@@ -448,7 +448,7 @@ export function CustomAppShell() {
 
             <div className="pb-8 flex items-center justify-center text-center text-sm text-muted-foreground">
               <Text c="gray.6">
-                © 2025 Dzmitry Karaleu. All rights reserved.
+                © 2026 Dzmitry Karaleu. All rights reserved.
               </Text>
             </div>
           </Stack>
