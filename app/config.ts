@@ -75,6 +75,14 @@ export const config = {
       tech: ['Angular', 'RxJS', 'Node.js', 'PostgreSQL'],
     },
   ],
+  gallery: [
+    {
+      title: 'Slideck',
+      description: 'AI-powered slide deck generator',
+      image: '/projects/slideck.png',
+      link: 'https://slideck.click/',
+    },
+  ],
   skills: [
     {
       category: 'Frontend',

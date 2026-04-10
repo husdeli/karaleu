@@ -8,6 +8,7 @@ import {
   Chip,
   Container,
   Group,
+  Image,
   Stack,
   Text,
   Title,
@@ -266,6 +267,57 @@ export function CustomAppShell() {
 
             {separator}
 
+            <Section id="gallery" title="Project Gallery">
+              <Stack gap="xl" py="lg">
+                {config.gallery.map((project) => (
+                  <a
+                    key={project.title}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative overflow-hidden rounded-xl group cursor-pointer block no-underline"
+                    style={{ minHeight: 380 }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      h={{ base: 300, sm: 420 }}
+                      fit="cover"
+                      className="transition-transform duration-700 group-hover:scale-105"
+                      radius="lg"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-xl" />
+                    <Group
+                      justify="space-between"
+                      align="flex-end"
+                      className="absolute inset-0 p-6 sm:p-8"
+                    >
+                      <Box>
+                        <Title order={2} c="white" fw={700}>
+                          {project.title}
+                        </Title>
+                        {project.description && (
+                          <Text fz="md" c="gray.3" mt={4}>
+                            {project.description}
+                          </Text>
+                        )}
+                      </Box>
+                      <Button
+                        component="span"
+                        variant="white"
+                        size="sm"
+                        rightSection={<IconArrowRight size={16} />}
+                      >
+                        View Project
+                      </Button>
+                    </Group>
+                  </a>
+                ))}
+              </Stack>
+            </Section>
+
+            {separator}
+
             <Section id="about" title="Professional Summary">
               <div className="space-y-4 text-foreground dark:text-slate-200 leading-relaxed">
                 <p>
@@ -396,8 +448,6 @@ export function CustomAppShell() {
                 </div>
               ))}
             </div>
-
-            {separator}
 
             <div className="pb-8 flex items-center justify-center text-center text-sm text-muted-foreground">
               <Text c="gray.6">
