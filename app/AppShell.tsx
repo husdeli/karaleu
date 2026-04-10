@@ -97,7 +97,6 @@ export function CustomAppShell() {
             <Box>
               <ActionIcon
                 variant="subtle"
-                className="text-amber-300"
                 size="lg"
                 onClick={toggleColorScheme}
               >
@@ -290,8 +289,9 @@ export function CustomAppShell() {
                         )}
                       </Box>
                       <Button
+                        className="text-white hover:bg-slate-900"
                         component="span"
-                        variant="white"
+                        variant="subtle"
                         size="sm"
                         rightSection={<IconArrowRight size={16} />}
                       >

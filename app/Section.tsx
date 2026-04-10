@@ -11,7 +11,7 @@ export function Section({
 >) {
   return (
     <section id={id} {...rest}>
-      <Title order={2} fz="xl" fw={600} mb="md" c={'primary.5'}>
+      <Title order={2} fz="xl" fw={600} mb="md">
         {title}
       </Title>
       {children}
