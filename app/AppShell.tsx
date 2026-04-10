@@ -136,55 +136,29 @@ export function CustomAppShell() {
                   'calc(100vh - var(--app-shell-header-offset) - var(--app-shell-padding))',
               }}
             >
-              <Box>
-                <Title
-                  className="text-slate-900 dark:text-slate-100"
-                  fw={900}
-                  order={1}
-                  fz={{
-                    base: 'xl',
-                    [breakpoint]: 'xxl',
-                  }}
-                >
-                  Hi, I'm Dzmitry Karaleu
-                </Title>
-
-                <Text
-                  c="primary.5"
-                  fz={{
-                    base: 'xl',
-                    [breakpoint]: 'xxl',
-                  }}
-                  fw={900}
-                >
-                  Full-Stack Software Developer
-                </Text>
-                <Group
-                  mt="xs"
-                  gap="xs"
-                  className="text-slate-500 dark:text-slate-400 flex items-center text-muted-foreground"
-                >
-                  <Box visibleFrom={breakpoint}>
-                    <IconMapPin size={16} />
-                  </Box>
-                  <Box hiddenFrom={breakpoint}>
-                    <IconMapPin size={12} />
-                  </Box>
-                  <Text
-                    fw={500}
+              <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-8">
+                <Box>
+                  <Title
+                    className="text-slate-900 dark:text-slate-100"
+                    fw={900}
+                    order={1}
                     fz={{
-                      base: 'sm',
-                      [breakpoint]: 'lg',
+                      base: 'xl',
+                      [breakpoint]: 'xxl',
                     }}
                   >
-                    Den Haag, The Netherlands
-                  </Text>
-                </Group>
-              </Box>
+                    Hi, I'm Dima
+                  </Title>
+                </Box>
+
+                <div className="hidden absolute flex-shrink-0 sm:self-center -z-10 w-[400px] aspect-square bg-white right-0 border top-20 bottom-20">
+                  <div className="relative"></div>
+                </div>
+              </div>
 
               <Text
                 c={colorScheme === 'dark' ? 'gray.3' : 'gray.6'}
-                className="max-w-3xl"
+                className="max-w-2xl"
                 fz={{
                   base: 'md',
                   [breakpoint]: 'lg',
@@ -192,14 +166,16 @@ export function CustomAppShell() {
                 fw={400}
                 lh="lg"
               >
-                Senior Software Engineer with 8 years of experience turning
-                complex ideas into reliable, high-performance web applications.
-                I lead development from strategy to delivery, collaborating
-                across teams, delegating effectively, and driving strong
-                engineering decisions. I focus on scalable architecture, smooth
-                user experience, and helping teams deliver efficiently.
-                Curiosity, clarity, and a strong sense of ownership guide how I
-                build and how I lead.
+                Full-Stack Engineer with 8 years of turning{' '}
+                <span className="text-slate-700 dark:text-slate-300 font-medium">
+                  "can we build this?"
+                </span>{' '}
+                into{' '}
+                <span className="text-slate-700 dark:text-slate-300 font-medium">
+                  "shipped last Tuesday."
+                </span>{' '}
+                I thrive at the intersection of clean code, fast products, and
+                teams that actually enjoy what they&apos;re building.
               </Text>
 
               <div className="flex flex-wrap gap-3 pt-2">
@@ -243,10 +219,21 @@ export function CustomAppShell() {
 
               <div className="flex gap-4 pt-4 ">
                 <a
+                  href={`https://www.google.com/maps?q=${config.location.lat},${config.location.lng}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-indigo-500 transition-colors flex items-center"
+                >
+                  <IconMapPin
+                    size={20}
+                    className="text-muted-foreground hover:text-indigo-500 transition-colors flex items-center"
+                  />
+                </a>
+                <a
                   href={config.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-indigo-500 transition-colors"
+                  className="text-muted-foreground hover:text-indigo-500 transition-colors flex items-center"
                 >
                   <IconBrandGithub size={20} />
                 </a>
@@ -254,7 +241,7 @@ export function CustomAppShell() {
                   href={config.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-indigo-500 transition-colors"
+                  className="text-muted-foreground hover:text-indigo-500 transition-colors flex items-center"
                 >
                   <IconBrandLinkedin size={20} />
                 </a>
@@ -318,33 +305,43 @@ export function CustomAppShell() {
 
             {separator}
 
-            <Section id="about" title="Professional Summary">
-              <div className="space-y-4 text-foreground dark:text-slate-200 leading-relaxed">
+            <Section id="about" title="A bit about me">
+              <div className="space-y-5 text-foreground dark:text-slate-200 leading-relaxed">
                 <p>
-                  Specializing in React, TypeScript, and Node.js ecosystems.
-                  Strong focus on code quality, testing, and user experience.
-                  Experienced in leading development teams and mentoring junior
-                  developers.
+                  I&apos;m a Full-Stack Engineer with 8 years of experience —
+                  mostly living in the React &amp; TypeScript world, but
+                  comfortable wherever the problem takes me. I care deeply about
+                  code that actually works, ships on time, and doesn&apos;t make
+                  the next developer cry.
                 </p>
                 <p>
-                  I enjoy solving difficult engineering challenges, unblocking
-                  teams, and turning ambiguity into clear, actionable plans.
-                  With a strong sense of ownership and product mindset, I focus
-                  on solutions that scale well, are easy to maintain, and
-                  provide a great user experience. Curiosity and continuous
-                  improvement guide how I build and how I lead.
+                  Day-to-day, I lead teams, untangle gnarly problems, and turn
+                  vague requirements into something everyone can build toward.
+                  I&apos;m the kind of engineer who&apos;d rather spend an hour
+                  documenting a decision than spend a week undoing it.
+                </p>
+                <p className="text-muted-foreground">
+                  When I&apos;m not shipping features, I&apos;m probably
+                  tinkering with side projects, obsessing over performance
+                  numbers, or trying to convince teammates that tests are
+                  actually fun (results vary).
                 </p>
 
-                <div className="pt-4">
-                  <h3 className="font-semibold mb-2">Key Strengths:</h3>
-                  <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                    <li>
-                      Full-stack development with modern JavaScript frameworks
-                    </li>
-                    <li>Building scalable, maintainable architectures</li>
-                    <li>Performance optimization and best practices</li>
-                    <li>Agile development and team collaboration</li>
-                  </ul>
+                <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {[
+                    { emoji: '⚛️', label: 'React & TypeScript at heart' },
+                    { emoji: '🏗️', label: 'Architecture that ages well' },
+                    { emoji: '🚀', label: 'Performance obsessed' },
+                    { emoji: '🤝', label: 'Teams ship better together' },
+                  ].map(({ emoji, label }) => (
+                    <div
+                      key={label}
+                      className="flex items-center gap-3 px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-[#1e1e1e]"
+                    >
+                      <span className="text-xl">{emoji}</span>
+                      <span className="text-sm font-medium">{label}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </Section>

@@ -2,6 +2,10 @@ export const config = {
   github: 'https://github.com/husdeli',
   linkedin: 'https://www.linkedin.com/in/dzmitry-404-karaleu/',
   email: 'kdv3505381@gmail.com',
+  location: {
+    lat: 52.0705,
+    lng: 4.3007,
+  },
   projects: [
     {
       title: 'Map Maker',

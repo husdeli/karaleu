@@ -32,21 +32,22 @@ type ColorSet = [
   string,
 ]
 
-export const fontFamily = 'Geist, Geist Fallback'
+export const fontFamily =
+  'Funnel Display, -apple-system, BlinkMacSystemFont, sans-serif'
 
 export const mantineTheme = createTheme({
   fontFamily: fontFamily,
   headings: {
-    fontFamily: 'Geist, Geist Fallback',
+    fontFamily: fontFamily,
   },
   fontSizes: {
     xs: rem(10),
     sm: rem(14),
     md: rem(16),
     lg: rem(18),
-    xl: rem(24),
-    xxl: rem(36),
-    xxxl: rem(40),
+    xl: rem(36),
+    xxl: rem(56),
+    xxxl: rem(60),
   },
   lineHeights: {
     xs: '1',
